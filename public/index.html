@@ -1,0 +1,80 @@
+<!doctype html><html><head><title>Shows</title></head>
+<body>
+    <style>
+        .show-name { font-size: 2rem }
+        .container { display: block; width:20rem; margin:0 0 0 2rem; float:left }
+        show-list > div { margin: 1rem 0 0 0;  }
+        .field {clear:both; text-align:right;}
+        label {float: left}
+
+        .button {            
+            padding: 0.3rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            border: 1px solid #cccccc
+        }
+    </style>
+    
+    <div class = "container">
+        <show-list></show-list>
+        
+        <div>
+            <input type = "button" class = "button" value = "❮ Prev"  id= "prev" />
+            <input type = "button" class = "button" value = "Next ❯"  id= "next" />
+        </div>
+
+    <div>
+
+    <script type="riot/tag" src="show-list.tag"></script>
+    <script type="riot/tag" src="cast-list.tag"></script>
+    <script src="https://cdn.jsdelivr.net/npm/riot@3.12/riot+compiler.min.js"></script>
+        
+    <script>  
+
+    
+    
+    (function (){
+
+            let opts = {page:1, limit:3} ;
+
+            const getShows = ( opts  )=>{
+                
+                let {page,limit} = opts
+                let url = "/shows?page="+page+'&limit='+limit
+
+                fetch(url)
+                .then( resp => {
+                    if ( resp.ok ) return resp.json()
+                    throw new Error(`service return ${resp.status}`)  
+                })
+                .then( shows => {            
+                    riot.mount( 'show-list', {shows })    
+                })
+                .catch( alert )
+            }
+            
+            let prev = document.getElementById("prev")
+            prev.addEventListener("click",()=>{
+                if (opts.page==1) return;
+                opts.page = opts.page - 1;
+                getShows(opts)
+            })
+
+            let next = document.getElementById("next")
+            next.addEventListener("click",()=>{               
+                opts.page = opts.page + 1;
+                getShows(opts)
+            })
+
+            getShows(opts)
+        
+
+
+
+
+    })()</script>
+    
+</body>
+</html>
