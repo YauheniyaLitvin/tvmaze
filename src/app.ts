@@ -1,11 +1,10 @@
-
-
-import express from "express";
+import express, {Request, Response, NextFunction} from "express";
 import bodyParser from "body-parser";
 
 import {Application} from "express"
 import config from "./config"
 import router from "./router"
+import IError from "./interfaces/error"
 import * as dbInstance from './dbInstance'
 
 class App {
@@ -15,7 +14,13 @@ class App {
         this.config();
     }
 
-    public app:Application;
+    public app:Application;    
+
+    
+    private errorHandler( err:IError, req:Request, res:Response, next:NextFunction ){
+            res.status(500);
+            res.json({ error: (err)?err.message:"server error" });
+    }
 
     private config():void{        
             
@@ -24,6 +29,8 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.set("port", process.env.PORT || config.port );         
         this.app.use( '/', router)
+        this.app.use(this.errorHandler)
+
     
     }
     
