@@ -16,11 +16,11 @@
 
 # Project API:
 
-## Get Show:
+## Get shows:
 - URL: /shows?page=:num&limit=:count 
 - Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/shows?page=1&limit=10
 
-# Get Show (strict mode):
+## Get shows (strict mode):
 - URL: /api/show?page=:num&limit=:count 
 - Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/api/show?page=1&limit=10
 
