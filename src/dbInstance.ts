@@ -9,10 +9,16 @@ let client : any, db :  any
 
 })()
 
-export function get(){
-    return db
+export async function get(){
+    if (db) return db
+    return connectdb()
 }
 
+async function connectdb(){
+    client = await storage.connect()
+    db = storage.db( client )
+    return db
+}
 export function close(){
     storage.close( client )
 }
