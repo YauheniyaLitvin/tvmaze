@@ -5,7 +5,7 @@ export async function paste( db: m.Db, shows: any[] ) : Promise<m.InsertWriteOpR
 }
  
 export function noCast( db: m.Db ) : m.Cursor {
-     return coll(db).find({ cast: null },{ projection: { id: 1 } } )
+     return coll(db).find({ cast: null },{ projection: { id: 1 },sort:{id:1} } )
 }
  
 export async function setCast( db: m.Db, show: any, cast: any ){
