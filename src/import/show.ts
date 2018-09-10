@@ -23,11 +23,11 @@ export async function run( getPage = page /* savePage = defSave()*/ ) : Promise<
 
 // extract transform load
 // get and save
-async function etl( num : number, db : Db, getPage = page ) : Promise<boolean> {
+export async function etl( num : number, db : Db, getPage = page, pastPage = paste ) : Promise<boolean> {
    
   try {
     const shows = await getPage( num )    
-    await paste( db, shows.map( (s:any) => Object.assign({}, s )) )
+    await pastPage( db, shows.map( (s:any) => Object.assign({}, s )) )
   } catch( err ){
     logger.error( `etl ${num}: ${err}`)
     return false
