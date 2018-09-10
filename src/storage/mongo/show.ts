@@ -17,7 +17,7 @@ export async function setCast( db: m.Db, show: any, cast: any ){
  }
 export async function get(  db: m.Db, page:number=1, limit:number=10 ){ 
     let skip:number = (page-1)*limit
-    const cursor = coll(db).find({},{skip,limit })
+    const cursor = coll(db).find({},{skip,limit ,sort:{id:1}})
     const data =  await cursor.toArray()
     return data 
 }
@@ -28,7 +28,11 @@ export async function getStrict(  db: m.Db, page:number=1, limit:number=10 ){
     const data =  await cursor.toArray()
     return data 
 }
+export async function createIndexes(db: m.Db){
 
+    return coll(db).createIndex("id")
+
+}
 function coll( db: m.Db, collName : string = 'show') : m.Collection {
      return db.collection( collName )
 }

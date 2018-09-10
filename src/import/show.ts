@@ -1,6 +1,6 @@
 import { Db } from 'mongodb'
 import {connect, db as getDb, close as disconnect }  from "../storage/mongo/db"
-import {paste}  from "../storage/mongo/show"
+import {paste , createIndexes}  from "../storage/mongo/show"
 import {page}  from "../service/tvmaze/show"
 import Logger from './../logger'
 const logger = Logger(module)
@@ -11,6 +11,7 @@ export async function run( getPage = page /* savePage = defSave()*/ ) : Promise<
   let ok = true
   const client = await connect()
   const db = getDb( client )
+  await createIndexes(db)
     
   do {
     ok = await etl( num, db, getPage )
