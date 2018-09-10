@@ -4,7 +4,7 @@ import app from "../src/app";
 describe("GET /api", () => {
   it("should return 200 OK", (done) => {
 
-    request(app).get("/shows")
+    request(app).get("/api/show")
     .expect('Content-Type', /json/)
     .expect(200, done )
 
