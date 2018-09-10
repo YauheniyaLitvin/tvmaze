@@ -17,7 +17,7 @@ export async function setCast( db: m.Db, show: any, cast: any ){
  }
 export async function get(  db: m.Db, page:number=1, limit:number=10 ){ 
     let skip:number = (page-1)*limit
-    const cursor = coll(db).find({},{skip,limit})
+    const cursor = coll(db).find({},{skip,limit })
     const data =  await cursor.toArray()
     return data 
 }

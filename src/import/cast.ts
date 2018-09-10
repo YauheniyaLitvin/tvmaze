@@ -26,7 +26,7 @@ export async function run( getCastAndSet = etl ){
 async function etl( show: any, setCast : any, getCast = serviceGet){
     try {
         const extCast : any[] = await getCast( show.id ) //extract
-        const cast = extCast.sort( byBirthday ).map( transform ) //transform
+        const cast = extCast.map( transform ).sort( byBirthdayDesc ) //transform
         await setCast( show, cast ) // persist
     } catch ( e ){
         logger.error( `import cast error: ${show}, ${e}` )
@@ -35,11 +35,11 @@ async function etl( show: any, setCast : any, getCast = serviceGet){
 
 
 
-function byBirthday(c1 : any, c2 : any){
-    const dob1 = c1.person.birtday //odbc, '1979-07-17'
-    const dob2 = c2.person.birtday
-    if (dob1 > dob2) return 1
-    if (dob1 < dob2) return -1
+export function byBirthdayDesc(c1 : any, c2 : any){
+    const dob1 = new Date(c1.birthday) //odbc, '1979-07-17'
+    const dob2 =  new Date(c2.birthday)
+    if (dob1 > dob2) return -1
+    if (dob1 < dob2) return 1
     return 0
 }
 
