@@ -7,7 +7,7 @@ let db:Db;
 
 describe("get and save show ", () => {
 
-  it(" didn't get page => no save page", async (done) => {
+  it(" didn't get page => did't call save page", async (done) => {
     
     
         let getPage = sinon.stub().throws();    
