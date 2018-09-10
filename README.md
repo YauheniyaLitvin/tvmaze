@@ -1,6 +1,6 @@
 # tvmaze
 
-#Project Structure:
+# Project Structure:
 
 - dist                    distributable from TypeScript build
 - log                     log is formed with winston logger
@@ -14,12 +14,15 @@
 
 
 
-#Project API:
+# Project API:
 
 ## Get Show:
 - URL: /shows?page=:num&limit=:count 
-- Example: http://localhost:3000/shows?page=1&limit=10
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/shows?page=1&limit=10
 
-##Get Show (strict mode):
+# Get Show (strict mode):
 - URL: /api/show?page=:num&limit=:count 
-- Example: http://localhost:3000/api/show?page=1&limit=10
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/api/show?page=1&limit=10
+
+# Demo
+- https://yauheniya-litvin-tvmaze.azurewebsites.net/index.html
