@@ -1,2 +1,0 @@
-<show-pager>
-</show-pager>

@@ -1,9 +1,13 @@
 <!doctype html><html><head><title>Shows</title></head>
 <body>
     <style>
+        .container { margin:0 0 2rem; }
         .show-name { font-size: 2rem }
-        .container { display: block; width:20rem; margin:0 0 0 2rem; float:left }
+        .show-main { display: flex }        
+        .show-img, .show-cast { margin:5px }
+        
         show-list > div { margin: 1rem 0 0 0;  }
+
         .field {clear:both; text-align:right;}
         label {float: left}
 
@@ -18,12 +22,14 @@
     </style>
     
     <div class = "container">
-        <show-list></show-list>
-        
+
         <div>
             <input type = "button" class = "button" value = "❮ Prev"  id= "prev" />
             <input type = "button" class = "button" value = "Next ❯"  id= "next" />
         </div>
+
+        <show-list></show-list>
+
 
     <div>
 

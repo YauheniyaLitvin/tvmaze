@@ -1,12 +1,12 @@
 
 import {Request, Response, NextFunction} from "express";
-import { get as getShow , noCast}  from "../storage/mongo/show";
+import { get as getShow }  from "../storage/mongo/show";
 
 import * as dbInstance from './../dbInstance'
+
 export async function get(req:Request, res:Response, next:NextFunction) {
 
-  try { 
-   
+  try {   
 
     const {limit = 3,page = 1} = req.query; 
     const db = dbInstance.get()

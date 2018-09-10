@@ -24,7 +24,7 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.set("port", process.env.PORT || config.port );         
         this.app.use( '/', router)
-     
+    
     }
     
 }

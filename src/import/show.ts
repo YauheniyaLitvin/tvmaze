@@ -1,22 +1,9 @@
-import  { Shows as GetShows, Casts as GetCasts}  from "./../service"
-//import IShow from './../interfaces/show'
 import { Db } from 'mongodb'
 import {connect, db as getDb, close as disconnect }  from "../storage/mongo/db"
 import {paste}  from "../storage/mongo/show"
 import {page}  from "../service/tvmaze/show"
 import Logger from './../logger'
 const logger = Logger(module)
-
-
-
-/*const defSave = ( ) => {
-  const client =  await connect()
-  const db = getDb( client )
-  return async ( shows: any ) => {
-     await paste( db, shows )
-     disconnect( client )
-  }
-}*/
 
 export async function run( getPage = page /* savePage = defSave()*/ ) : Promise<void> {
 

@@ -1,6 +1,6 @@
 <cast-list>
     <div each={ casts } class="field">
-        <label>{ name }</label><span>  { dob( birthday ) } - { age( birthday ) } </span>
+        <a href={ url }>{ name }</a> ( { character.name } )</label><span>  { dob( birthday ) } - { age( birthday ) } </span>
     </div>
 <script>
     const tag = this

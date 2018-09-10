@@ -1,5 +1,4 @@
 import request from "supertest";
-import mongoose from "mongoose"
 import app from "../src/app";
 
 describe("GET /api", () => {
@@ -16,9 +15,4 @@ describe("GET /api", () => {
       .expect(404, done);
   });
 
-});
-
-afterAll(() => {
-    mongoose.disconnect()
-});
-  
+}); 
