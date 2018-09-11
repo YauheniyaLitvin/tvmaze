@@ -13,7 +13,6 @@
 - test                    tests
 
 
-
 # Project API:
 
 ## Get shows:
@@ -26,3 +25,15 @@
 
 # Demo
 - https://yauheniya-litvin-tvmaze.azurewebsites.net/index.html
+
+# Running the build
+
+```npm start``` - runs node with forever
+
+```npm stop``` - stops node
+
+```npm run test``` - runs tests using Jest
+
+```npm run tsw``` - run TypeScript compiler and watch
+
+```npm run dev ``` - runs node with nodemon
