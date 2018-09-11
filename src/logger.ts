@@ -1,9 +1,9 @@
-import  { createLogger, format, transports, Logger } from "winston"
+import  { createLogger, format, transports, Logger } from 'winston'
 const { combine, timestamp, printf, label } = format;
-import fs from "fs"
+import fs from 'fs'
 
 
-const logdir:string = "log"
+const logdir:string = 'log'
 if (!fs.existsSync(logdir)) {
     fs.mkdirSync(logdir);
 }

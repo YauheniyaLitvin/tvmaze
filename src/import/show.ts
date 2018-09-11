@@ -1,7 +1,7 @@
 import { Db } from 'mongodb'
-import {connect, db as getDb, close as disconnect }  from "../storage/mongo/db"
-import {paste , createIndexes}  from "../storage/mongo/show"
-import {page}  from "../service/tvmaze/show"
+import {connect, db as getDb, close as disconnect }  from '../storage/mongo/db'
+import {paste , createIndexes}  from '../storage/mongo/show'
+import {page}  from '../service/tvmaze/show'
 import Logger from './../logger'
 const logger = Logger(module)
 

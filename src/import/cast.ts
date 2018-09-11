@@ -1,4 +1,4 @@
-import {connect, db as getDb, close as disconnect }  from "../storage/mongo/db"
+import {connect, db as getDb, close as disconnect }  from '../storage/mongo/db'
 import { noCast, setCast }  from '../storage/mongo/show'
 import { get as serviceGet }  from '../service/tvmaze/cast'
 import Logger from './../logger'

@@ -3,7 +3,7 @@ import axios from 'axios'
 import sinon from 'sinon'
 
 
-it(" should recall  get function while get ratelimit error ", async (done) => {   
+it(' should recall  get function while get ratelimit error ', async (done) => {   
      
        expect.assertions(2);       
 

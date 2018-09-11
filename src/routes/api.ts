@@ -1,6 +1,6 @@
-import {Request, Response, NextFunction} from "express";
+import {Request, Response, NextFunction} from 'express'
 import * as dbInstance from './../dbInstance'
-import { getStrict }  from "../storage/mongo/show"
+import { getStrict }  from '../storage/mongo/show'
 
 export async function get(req:Request, res:Response, next:NextFunction) {
 

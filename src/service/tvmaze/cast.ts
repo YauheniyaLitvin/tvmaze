@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from 'axios'
 
-import config from "../../config"
+import config from '../../config'
 import Logger from '../../logger'
 const logger = Logger(module)
 

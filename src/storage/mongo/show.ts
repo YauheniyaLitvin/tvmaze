@@ -24,13 +24,13 @@ export async function get(  db: m.Db, page:number=1, limit:number=10 ){
 
 export async function getStrict(  db: m.Db, page:number=1, limit:number=10 ){ 
     let skip:number = (page-1)*limit
-    const cursor = coll(db).find({},{skip,limit, projection:{id:1,name:1, "cast.id":1,"cast.name":1, "cast.birthday":1}})
+    const cursor = coll(db).find({},{skip,limit, projection:{id:1,name:1, 'cast.id':1,'cast.name':1, 'cast.birthday':1}})
     const data =  await cursor.toArray()
     return data 
 }
 export async function createIndexes(db: m.Db){
 
-    return coll(db).createIndex("id")
+    return coll(db).createIndex('id')
 
 }
 function coll( db: m.Db, collName : string = 'show') : m.Collection {

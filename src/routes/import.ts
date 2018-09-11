@@ -6,14 +6,14 @@ const router = Router()
 
 router.get('/show', ( req, res , next)=>{
     showImport()
-    res.json("ok").end()
+    res.json('ok').end()
  
 })
 
 router.get('/cast', ( req, res , next)=>{
  
      castImport()
-     res.json("ok").end()
+     res.json('ok').end()
   
 })
 

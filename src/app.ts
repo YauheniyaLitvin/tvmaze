@@ -1,10 +1,10 @@
-import express, {Request, Response, NextFunction} from "express";
-import bodyParser from "body-parser";
+import express, {Request, Response, NextFunction} from 'express'
+import bodyParser from 'body-parser'
 
-import {Application} from "express"
-import config from "./config"
-import router from "./router"
-import IError from "./interfaces/error"
+import {Application} from 'express'
+import config from './config'
+import router from './router'
+import IError from './interfaces/error'
 import * as dbInstance from './dbInstance'
 
 class App {
@@ -19,15 +19,15 @@ class App {
     
     private errorHandler( err:IError, req:Request, res:Response, next:NextFunction ){
             res.status(500);
-            res.json({ error: (err)?err.message:"server error" });
+            res.json({ error: (err)?err.message:'server error' })
     }
 
     private config():void{        
             
-        this.app.use(express.static('public'));
-        this.app.use(bodyParser.json());
-        this.app.use(bodyParser.urlencoded({ extended: false }));
-        this.app.set("port", process.env.PORT || config.port );         
+        this.app.use(express.static('public'))
+        this.app.use(bodyParser.json())
+        this.app.use(bodyParser.urlencoded({ extended: false }))
+        this.app.set('port', process.env.PORT || config.port )         
         this.app.use( '/', router)
         this.app.use(this.errorHandler)
 

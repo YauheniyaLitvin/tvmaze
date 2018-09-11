@@ -1,13 +1,13 @@
 
 import { get } from '../src/service/tvmaze/cast'
-import config from "../src/config"
+import config from '../src/config'
 
 
-describe(" get first page showsw ", () => {
+describe(' get first page showsw', () => {
 
-    it(" should return first page ", async (done) => {
+    it('should return first page ', async (done) => {
         
-        expect.assertions(2);
+        expect.assertions(2)
         
         const show = 1, baseUrl = config.tvmaze.url   
         const result  = await get( show , baseUrl)

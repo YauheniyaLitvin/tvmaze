@@ -1,8 +1,8 @@
-import express from "express";
+import express from 'express'
 
-import { get as shows } from "./routes/shows"
-import importRouter from "./routes/import"
-import { get as api} from "./routes/api"
+import { get as shows } from './routes/shows'
+import importRouter from './routes/import'
+import { get as api} from './routes/api'
 
 const router = express.Router()
 

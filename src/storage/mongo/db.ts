@@ -1,5 +1,5 @@
 import * as m from 'mongodb'
-import config from "../../config"
+import config from '../../config'
 import Logger from '../../logger'
 
 const logger = Logger( module )
