@@ -4,7 +4,7 @@ import Logger from '../../logger'
 const logger = Logger(module)
 import { URL}  from 'url'
 
-export async function page( num : number, baseUrl: string = config.tvmaze.url ){
+export async function page( num : number, baseUrl: string = config.TVMAZE.URL ){
 
     const url  = getUrl(num , baseUrl)
     const resp = await axios.request( { url } )  
@@ -13,7 +13,7 @@ export async function page( num : number, baseUrl: string = config.tvmaze.url ){
 
 }
 
-export function getUrl(page:number , baseUrl: string = config.tvmaze.url  ): string{
+export function getUrl(page:number , baseUrl: string = config.TVMAZE.URL  ): string{
     const url = new URL(baseUrl)
     url.searchParams.set('page', page.toString() )
     return url.href

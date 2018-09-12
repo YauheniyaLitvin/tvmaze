@@ -4,7 +4,7 @@ import Logger from '../../logger'
 
 const logger = Logger( module )
 
-export async function connect( url : string  = config.db.url ) : Promise<m.MongoClient>{
+export async function connect( url : string  = config.DB.URL ) : Promise<m.MongoClient>{
     return m.MongoClient.connect( url, { useNewUrlParser: true } ) 
 }
 

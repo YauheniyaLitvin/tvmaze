@@ -5,7 +5,7 @@ import Logger from '../../logger'
 const logger = Logger(module)
 
 
-export async function get( show:number , baseUrl: string = config.tvmaze.url, onError = rateErrorHandler ){
+export async function get( show:number , baseUrl: string = config.TVMAZE.URL, onError = rateErrorHandler ){
 
     const url = getUrl(show, baseUrl)    
     try{
@@ -17,7 +17,7 @@ export async function get( show:number , baseUrl: string = config.tvmaze.url, on
     }
 }
 
-export function getUrl(show:number , baseUrl: string = config.tvmaze.url  ): string{
+export function getUrl(show:number , baseUrl: string = config.TVMAZE.URL  ): string{
     const url = new URL(baseUrl)
     url.searchParams.set('cast', show.toString() )
     return url.href

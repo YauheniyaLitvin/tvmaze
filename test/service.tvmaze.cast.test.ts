@@ -9,7 +9,7 @@ describe(' get first page showsw', () => {
         
         expect.assertions(2)
         
-        const show = 1, baseUrl = config.tvmaze.url   
+        const show = 1, baseUrl = config.TVMAZE.URL   
         const result  = await get( show , baseUrl)
         
         expect(result).not.toBeNull()

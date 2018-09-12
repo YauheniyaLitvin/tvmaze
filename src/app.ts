@@ -27,7 +27,7 @@ class App {
         this.app.use(express.static('public'))
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({ extended: false }))
-        this.app.set('port', process.env.PORT || config.port )         
+        this.app.set('port', process.env.PORT || config.PORT )         
         this.app.use( '/', router)
         this.app.use(this.errorHandler)
 

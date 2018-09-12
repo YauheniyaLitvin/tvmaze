@@ -1,4 +1,6 @@
 import { get, rateErrorHandler, RATELIMITERR}  from './../src/service/tvmaze/cast'
+import config from '../src/config'
+
 import axios from 'axios'
 import sinon from 'sinon'
 
@@ -18,7 +20,7 @@ it(' should recall  get function while get ratelimit error ', async (done) => {
        request.onCall(rnum++).returns(responseData) // should be called
        request.onCall(rnum++).throws(error)         // shouldn't be called
 
-       let result = await get(1,'/' )
+       let result = await get(1, config.TVMAZE.URL )
 
        expect(result).toEqual(responseData.data);
        expect(request.callCount).toEqual(3);

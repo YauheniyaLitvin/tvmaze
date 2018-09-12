@@ -20,15 +20,16 @@ if (!MONGODB_URI) {
 
 
 export default {
-    port:3000, 
+    PORT:3000, 
 
-    tvmaze:{
-        url:'http://api.tvmaze.com/shows',        
+    TVMAZE:{
+        URL:'http://api.tvmaze.com/shows',        
     },
-    db:{
-        url:MONGODB_URI
-    }
-
+    DB:{
+        URL:MONGODB_URI
+    },
+    PAGELIMIT:1,
+    PAGENUM:3
 }
 
 
