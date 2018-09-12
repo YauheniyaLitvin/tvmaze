@@ -1,17 +1,26 @@
 import axios from 'axios'
-
+import {URL} from 'url'
 import config from '../../config'
 import Logger from '../../logger'
 const logger = Logger(module)
 
+
 export async function get( show:number , baseUrl: string = config.tvmaze.url, onError = rateErrorHandler ){
-    const url = `${baseUrl}/${show}/cast`
+
+    const url = getUrl(show, baseUrl)    
     try{
-        logger.info( `get ${url} ` )
-        return ( await axios.request( { url }) ).data
+        const data = ( await axios.request( { url}) ).data
+        logger.info( `get ${ url} - ok` )
+        return data
     } catch( err ){
         return await onError( err, url )
     }
+}
+
+export function getUrl(show:number , baseUrl: string = config.tvmaze.url  ): string{
+    const url = new URL(baseUrl)
+    url.searchParams.set('cast', show.toString() )
+    return url.href
 }
 
 export const RATELIMITERR = 429;
