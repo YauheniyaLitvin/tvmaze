@@ -1,13 +1,13 @@
 import {etl}  from '../src/import/show'
 import { Db } from 'mongodb'
 
-import sinon from "sinon"
-const num = 1
+import sinon from 'sinon'
+const num = 1;
 let db:Db;
 
-describe("get and save show ", () => {
+describe('get and save show ', () => {
 
-  it(" didn't get page => did't call save page", async (done) => {
+  it(' did not get page => did not call save page', async (done) => {
     
     
         let getPage = sinon.stub().throws();    
@@ -24,7 +24,7 @@ describe("get and save show ", () => {
 
   });
 
-  it(" get page => save page", async (done) => {
+  it(' get page => save page', async (done) => {
     
     
         let getPage = sinon.spy(()=> [])  
