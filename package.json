@@ -5,11 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "tsw": "tsc -w",
-    "dev": "nodemon --watch dist dist index.js",
+    "dev": "nodemon --watch  dist app/index.js",
     "test": "jest --forceExit --coverage --detectOpenHandles",
-    "start": "forever start --uid app dist/index.js",
-    "stop": "forever stop app"
-
+    "start": "node dist/app/index.js"
   },
   "repository": {
     "type": "github",
@@ -31,13 +29,16 @@
     "supertest": "^3.3.0",
     "ts-jest": "^23.1.4",
     "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "@types/minimist": "^1.2.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "forever": "^0.15.3",
+    "minimist": "^1.2.0",
     "mongodb": "^3.1.4",
     "winston": "^3.1.0"
   }

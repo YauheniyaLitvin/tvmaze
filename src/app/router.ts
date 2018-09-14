@@ -1,13 +1,12 @@
 import express from 'express'
-
 import { get as shows } from './routes/shows'
-import importRouter from './routes/import'
-import { get as api} from './routes/api'
+import scrapperRouter from './routes/scrapper'
+
 
 const router = express.Router()
 
-router.get('/api/show', api )
 router.get('/shows', shows)
-router.use('/import', importRouter )
+router.use('/scrapper', scrapperRouter)
+
 
 export default router;

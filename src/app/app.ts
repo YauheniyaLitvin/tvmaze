@@ -1,11 +1,10 @@
 import express, {Request, Response, NextFunction} from 'express'
 import bodyParser from 'body-parser'
-
 import {Application} from 'express'
-import config from './config'
+import config from '../config'
 import router from './router'
-import IError from './interfaces/error'
-import * as dbInstance from './dbInstance'
+import IError from '../interfaces/error'
+
 
 class App {
 
