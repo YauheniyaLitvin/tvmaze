@@ -1,5 +1,6 @@
 
-import { get } from '../src/service/tvmaze/cast'
+import { get } from '../src/service/tvmaze/get'
+import {pageUrl} from '../src/scrapper/show'
 import config from '../src/config'
 
 
@@ -10,8 +11,7 @@ describe(' get first page showsw', () => {
         expect.assertions(2)
         
         const show = 1, baseUrl = config.TVMAZE.URL   
-        const result  = await get( show , baseUrl)
-        
+        const result:any = await get(  pageUrl( show ) )        
         expect(result).not.toBeNull()
         expect(result.length).toBeGreaterThan(0)
 

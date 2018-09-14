@@ -1,10 +1,10 @@
 import request from 'supertest'
-import app from '../src/app'
+import app from '../src/app/app'
 
 describe('GET /api', () => {
   it('should return 200 OK', (done) => {
 
-    request(app).get('/api/show')
+    request(app).get('/shows')
     .expect('Content-Type', /json/)
     .expect(200, done )
 
@@ -14,5 +14,4 @@ describe('GET /api', () => {
     request(app).get('/cast')
       .expect(404, done)
   })
-
 }) 

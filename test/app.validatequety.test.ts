@@ -1,4 +1,4 @@
-import {validateQuety} from '../src/routes/validator'
+import {validateQuety} from '../src/app/routes/shows'
 
 describe('test quyry params', () => {
     
