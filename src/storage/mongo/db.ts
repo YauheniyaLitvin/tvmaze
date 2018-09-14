@@ -1,8 +1,5 @@
 import * as m from 'mongodb'
 import config from '../../config'
-import Logger from '../../logger'
-
-const logger = Logger( module )
 
 export async function connect( url : string  = config.DB.URL ) : Promise<m.MongoClient>{
     return m.MongoClient.connect( url, { useNewUrlParser: true } ) 
