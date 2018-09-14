@@ -1,9 +1,9 @@
 
 import {Request, Response, NextFunction} from 'express';
-import { get as getShow }  from '../storage/mongo/show';
-import {validateQuety} from './validator'
-import config from '../config'
-import * as dbInstance from './../dbInstance'
+import { get as getShow }  from '../../storage/mongo/show';
+import { isNotInteger } from '../../utils'
+import config from '../../config'
+import * as dbInstance from './../../dbInstance'
 
 export async function get(req:Request, res:Response, next:NextFunction) {
 
@@ -21,4 +21,10 @@ export async function get(req:Request, res:Response, next:NextFunction) {
     next(err)
   }
 
+}
+
+export function  validateQuety( query:any ):boolean{  
+  let {page, limit} = query
+  if ( isNotInteger(page) || isNotInteger(limit) ) return false   
+  return true   
 }

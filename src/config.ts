@@ -29,7 +29,11 @@ export default {
         URL:MONGODB_URI
     },
     PAGELIMIT:1,
-    PAGENUM:3
+    PAGENUM:3,
+    FIRSTPAGE:0,
+    CALLSLIMIT:20,
+    TIMELIMIT:10000,
+    RATELIMITERR:429
 }
 
 
