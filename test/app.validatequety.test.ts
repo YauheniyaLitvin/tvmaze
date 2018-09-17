@@ -15,7 +15,7 @@ describe('test quyry params', () => {
     })
 
     it(' send 0', () => {            
-        expect( validateQuety({limit:'0', page:'1'}) ).toBe(false)        
+        expect( validateQuety({limit:'0', page:'1'}) ).toBe(true)        
     })
 
     it(' without params ', () => {            
