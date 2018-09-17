@@ -5,35 +5,39 @@
 - dist                    distributable from TypeScript build
 - log                     log is formed with winston logger
 - public                  static assets that will be used client side
-- src/import/show.ts      functions that get data from external service, transform data, and call data storage
-- src/import/cast.ts      functions that get show with empty cast from db, get cast from external service and call update of data
-- src/routes              functions that process httprequests  
+- src/app                 web service  
+- src/scrapper            scrapper service  
 - src/service             function that get data from external service
 - src/storage             functions that interact with db
 - test                    tests
 
 
-# Project API:
+
+# Demo
+- https://yauheniya-litvin-tvmaze.azurewebsites.net/index.html
+
+# Web service API:
 
 ## Get shows:
 - URL: /shows?page=:num&limit=:count 
 - Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/shows?page=1&limit=10
 
-## Get shows (strict mode):
-- URL: /api/show?page=:num&limit=:count 
-- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/api/show?page=1&limit=10
+## Start import shows
+- URL: /scrapper/start?page=:num
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/scrapper/start?page=:num
 
-# Demo
-- https://yauheniya-litvin-tvmaze.azurewebsites.net/index.html
+## Stop import shows
+- URL: /scrapper/stop
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/scrapper/stop
 
-# Running the build
+## Resume import shows
+- URL: /scrapper/resume
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/scrapper/resume
 
-```npm start``` - runs node with forever
+# Scrapper api
 
-```npm stop``` - stops node
+```node dist/scrapper start --page=[page]``` - start importing shows from page=[page]
 
-```npm run test``` - runs tests using Jest
+```node dist/scrapper resume``` - resume importing shows
 
-```npm run tsw``` - run TypeScript compiler and watch
 
-```npm run dev ``` - runs node with nodemon
