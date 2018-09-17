@@ -9,9 +9,13 @@ let child : cp.ChildProcess
 export function start( page = config.FIRSTPAGE) : boolean {
 
     if ( child ) return false
+   
+    const options = {
+        silent: true, detached :  true
+    }
     const args:any = [ 'start', `--page=${page}`] 
 
-    child = cp.fork( program, args )
+    child = cp.fork( program, args, options)
     child.on('close', (msg:any) => { 
         logger.info('scrapper-start stopped')
         child = null
@@ -23,8 +27,10 @@ export function start( page = config.FIRSTPAGE) : boolean {
 export function resume():boolean{
 
     if ( child ) stop()
-
-    child = cp.fork( program , [ 'resume' ] )
+    const options = {
+        silent: true, detached :  true
+    }
+    child = cp.fork( program , [ 'resume' ] ,options)
     child.on('close', (msg:any) => {
         logger.info('scrapper-resume stopped')
     })                                                                                                                                                                                                                                                                

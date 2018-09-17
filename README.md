@@ -24,7 +24,7 @@
 
 ## Start import shows
 - URL: /scrapper/start?page=:num
-- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/scrapper/start?page=:num
+- Example: https://yauheniya-litvin-tvmaze.azurewebsites.net/scrapper/start?page=2
 
 ## Stop import shows
 - URL: /scrapper/stop

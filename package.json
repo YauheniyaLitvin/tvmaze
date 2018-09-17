@@ -7,7 +7,9 @@
     "tsw": "tsc -w",
     "dev": "nodemon --watch  dist app/index.js",
     "test": "jest --forceExit --coverage --detectOpenHandles",
-    "start": "node dist/app/index.js"
+    "start": "node dist/app/index.js",
+    "stop": "forever stopall",
+    "restart": "forever restartall"
   },
   "repository": {
     "type": "github",
