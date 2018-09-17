@@ -16,7 +16,7 @@ process.on('message',  message => {});
     let command = opts._[0]
     if (!command) process.exit() 
     
-    logger.info(`started scrapper precess: ${command}`)
+    logger.info(`started scrapper process: ${command}`)
     
     if ( (command=='start') &&(!isNotInteger(opts.page)))  {
        await start( opts.page)      

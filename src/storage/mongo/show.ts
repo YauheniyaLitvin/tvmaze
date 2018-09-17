@@ -46,6 +46,8 @@ export async function createIndexes(db: m.Db){
 }
 
 export async function dropCollection(db: m.Db){
+    const collection = await db.listCollections({name:'show'}).next()
+    if (!collection) return 
     return coll(db).drop()
 
 }
