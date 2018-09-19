@@ -10,69 +10,70 @@ const logger = Logger(module)
 const FIRSTPAGE = config.get('FIRSTPAGE')
 
 
-export async function start(conn = connect,get = getDb):Promise<any>{
+export async function start(conn = connect,getdatabase = getDb, getPage = getPageState,
+             impPages = importPages, getNoCast  = noCast, ipmCast = importCasts,disconn =  disconnect):Promise<any>{
     try {
         const client = await conn()
-        const db = get(client)
-        let pageState = await getPageState(db)
+        const db = getdatabase(client)
+        let pageState = await getPage(db)
         let lastPage = (pageState)?pageState.page:null
-        if (!lastPage) return await importPages(FIRSTPAGE, db)
-        let noCastShows =  await noCast(db)
-        importCasts(noCastShows.map((show:any)=> show.id), db)
-        await importPages(lastPage , db)
-        disconnect(client)
+        if (!lastPage) return await impPages(FIRSTPAGE, db)
+
+        let noCastShows =  await getNoCast(db)
+        ipmCast(noCastShows.map((show:any)=> show.id), db)
+        await impPages(lastPage , db)
+        disconn(client)
     }catch(err){
         logger.error(err)
     }
 }
 
-export async function restart(from:number=FIRSTPAGE):Promise<any>{
-    try {
-        const client = await connect()
-        const db = getDb(client)
-        await dropCollection(db)
-        await createIndexes(db)
-        await importPages(from , db)
-        disconnect(client)
-    }catch(err){
-        logger.error(err)
-    }
-
-}
-
-export async function importPages(from:number=FIRSTPAGE , db:any):Promise<any>{
+export async function importPages(from:number = FIRSTPAGE , db:any, updPageState = updatePageState, iPage = importPage):Promise<any>{
     let num = from
-    while (await importPage(db, num)){
-        updatePageState(db, num)
-        logger.info(`loaded page ${ num}`)
+    while (await iPage(db, num)){
+        updPageState(db, num)
+        logger.info(`loaded page ${num}`)
         num ++
     }
 }
 
-async function importPage(db: any, num: number):Promise<boolean>{
+async function importPage(db:any, num:number, load = loadPage, save = savePage, impCasts = importCasts):Promise<boolean>{
     try {
-        const shows:any = await loadPage(num)
+        const shows:any = await load(num)
         if (!shows.length) return false
-        await savePage(db, shows.map((s:any) => Object.assign({}, s)))
-        importCasts(shows.map((s:any) => s.id) , db)
+        await save(db, shows.map((s:any) => Object.assign({}, s)))
+        impCasts(shows.map((s:any) => s.id) , db)
         return true
     } catch (err){
         return false
     }
 }
 
-async function loadPage(num: number):Promise<any>{
+async function loadPage(num:number, load = loadPage, getdata = get, getUrl = pageUrl, conf = config):Promise<any>{
     try {
-        return await get(pageUrl(num))
+        return await getdata(getUrl(num))
     } catch (err){
         logger.error(`load page error: ${num}, ${err}`)
-        if (err.response && err.response.status == config.get('RATELIMITERR')){
-            return await loadPage(num)
+        if (err.response && err.response.status == conf.get('RATELIMITERR')){
+            return await load(num)
         }
     }
     return []
 }
 
+export async function restart(from:number=FIRSTPAGE, conn = connect,getdatabase = getDb, dropColl = dropCollection, createInds = createIndexes,
+            impPages = importPages, disconn = disconnect):Promise<any>{
+    try {
+        const client = await conn()
+        const db = getdatabase(client)
+        await dropColl(db)
+        await createInds(db)
+        await impPages(from , db)
+        disconn(client)
+    }catch(err){
+        logger.error(err)
+    }
+}
 
 export function pageUrl(page:number , baseUrl: string = config.get('TVMAZE_URL')):string{
     const url = new URL(baseUrl)
