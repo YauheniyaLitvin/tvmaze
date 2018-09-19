@@ -9,29 +9,38 @@ import Logger from './logger'
 const logger = Logger(module)
 const FIRSTPAGE = config.get('FIRSTPAGE')
 
-export async function start(){
-    const client = await connect()
-    const db = getDb(client)
-    let pageState = await getPageState(db)
-    let lastPage = (pageState)?pageState.page:null
-    if (!lastPage) return await importPages(FIRSTPAGE, db)
 
-    let noCastShows =  await noCast(db)
-    importCasts(noCastShows.map((show:any)=> show.id), db)
-    await importPages(lastPage , db)
-    //disconnect(client)
+export async function start(conn = connect,get = getDb):Promise<any>{
+    try {
+        const client = await conn()
+        const db = get(client)
+        let pageState = await getPageState(db)
+        let lastPage = (pageState)?pageState.page:null
+        if (!lastPage) return await importPages(FIRSTPAGE, db)
+        let noCastShows =  await noCast(db)
+        importCasts(noCastShows.map((show:any)=> show.id), db)
+        await importPages(lastPage , db)
+        disconnect(client)
+    }catch(err){
+        logger.error(err)
+    }
 }
 
-export async function restart(from:number=FIRSTPAGE){
-    const client = await connect()
-    const db = getDb(client)
-    await dropCollection(db)
-    await createIndexes(db)
-    await importPages(from , db)
-    disconnect(client)
+export async function restart(from:number=FIRSTPAGE):Promise<any>{
+    try {
+        const client = await connect()
+        const db = getDb(client)
+        await dropCollection(db)
+        await createIndexes(db)
+        await importPages(from , db)
+        disconnect(client)
+    }catch(err){
+        logger.error(err)
+    }
+
 }
 
-export async function importPages(from:number=FIRSTPAGE , db:any){
+export async function importPages(from:number=FIRSTPAGE , db:any):Promise<any>{
     let num = from
     while (await importPage(db, num)){
         updatePageState(db, num)

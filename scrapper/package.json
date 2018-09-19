@@ -33,6 +33,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/dotenv": "^4.0.3",
     "@types/minimist": "^1.2.0",
     "@types/nconf": "0.0.37",
