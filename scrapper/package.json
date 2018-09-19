@@ -4,8 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js start",
-    "restart": "node dist/index.js restart"
+    "start": "forever start dist start",
+    "prod": "npm run start",
+    "dev": "concurrently --kill-others  \"npm run watch-ts\"  \"node dist start\" ",
+    "stop": "forever stopall",
+    "restart": "forever restartall",
+    "test": "jest --forceExit --coverage --detectOpenHandles",
+    "watch-ts": "tsc -w"
   },
   "repository": {
     "type": "github",
@@ -14,14 +19,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/dotenv": "^4.0.3",
     "@types/jest": "^23.3.2",
     "@types/mongodb": "^3.1.4",
     "@types/sinon": "^5.0.2",
     "@types/supertest": "^2.0.6",
-    "dotenv": "^6.0.0",
+    "concurrently": "^4.0.1",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.4",
     "sinon": "^6.2.0",
     "supertest": "^3.3.0",
     "ts-jest": "^23.1.4",
@@ -30,9 +33,11 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "@types/dotenv": "^4.0.3",
     "@types/minimist": "^1.2.0",
     "@types/nconf": "0.0.37",
     "axios": "^0.18.0",
+    "dotenv": "^6.0.0",
     "minimist": "^1.2.0",
     "mongodb": "^3.1.4",
     "nconf": "^0.10.0",

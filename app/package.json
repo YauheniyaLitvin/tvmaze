@@ -8,7 +8,7 @@
     "watch-ts": "tsc -w",
     "dev": "concurrently --kill-others \"npm run watch-ts\" \"npm run watch-node\"",
     "test": "jest --forceExit --coverage --detectOpenHandles",
-    "start": "node dist/index.js",
+    "start": "forever dist/index.js",
     "prod": "npm start",
     "stop": "forever stopall",
     "restart": "forever restartall"
@@ -25,6 +25,7 @@
     "@types/mongodb": "^3.1.4",
     "@types/sinon": "^5.0.2",
     "@types/supertest": "^2.0.6",
+    "concurrently": "^4.0.1",
     "jest": "^23.6.0",
     "nodemon": "^1.18.4",
     "sinon": "^6.2.0",
