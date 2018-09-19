@@ -1,0 +1,41 @@
+{
+  "name": "tvmaze",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js start",
+    "restart": "node dist/index.js restart"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/YauheniyaLitvin/tvmaze"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/jest": "^23.3.2",
+    "@types/mongodb": "^3.1.4",
+    "@types/sinon": "^5.0.2",
+    "@types/supertest": "^2.0.6",
+    "dotenv": "^6.0.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "sinon": "^6.2.0",
+    "supertest": "^3.3.0",
+    "ts-jest": "^23.1.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/nconf": "0.0.37",
+    "axios": "^0.18.0",
+    "minimist": "^1.2.0",
+    "mongodb": "^3.1.4",
+    "nconf": "^0.10.0",
+    "winston": "^3.1.0"
+  }
+}

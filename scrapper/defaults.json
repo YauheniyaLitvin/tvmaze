@@ -1,0 +1,10 @@
+{
+    "DB_URI":"mongodb://localhost:27017",
+    "TVMAZE_URL":"http://api.tvmaze.com/shows",
+    "DB_NAME":"showcasts",
+    "DB_SHOWCOLLECTION":"show",
+    "FIRSTPAGE":0,
+    "CALLSLIMIT":20,
+    "TIMELIMIT":10000,
+    "RATELIMITERR":429
+}

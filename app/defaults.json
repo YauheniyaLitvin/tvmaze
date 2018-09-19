@@ -1,0 +1,9 @@
+{
+    "PORT":3000,
+    "DB_URI":"mongodb://localhost:27017",
+    "DB_NAME":"showcasts",
+    "DB_SHOWCOLLECTION":"show",
+    "PAGELIMIT":1,
+    "PAGENUM":3,
+    "FIRSTPAGE":0
+}

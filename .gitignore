@@ -1,7 +1,10 @@
-node_modules/
-log/
-dist/
-coverage/
+app/node_modules/
+app/log/
+app/dist/
+app/.env
+app/.deployment
+scrapper/node_modules/
+scrapper/log/
+scrapper/dist/
+scrapper/.env
 .vscode/
-.env
-.deployment

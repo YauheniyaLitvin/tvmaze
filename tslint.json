@@ -1,6 +1,16 @@
 {
     "rules": {
         "quotemark": [true, "single"],
-        "semicolon": [false]
+        "semicolon": [false],
+        "no-duplicate-imports": true,
+        "space-within-parens": [true],
+        "prefer-template": true,
+        "no-unnecessary-callback-wrapper": true,
+        "no-trailing-whitespace":true,
+        "indent": [true, "spaces", 4],
+
+        "await-promise":true,
+        "ban-comma-operator": true
+
     }
 }
